@@ -1,0 +1,36 @@
+ASOCIACION INTERNACIONAL VIA FACIL:
+  account: Expenses:Residence:MADJuanBravo62
+
+Bar restaurante el nião p:
+  account: Expenses:Entertainment:Bar
+  narration: Previa despues de la clase
+  payee: El niño pastor
+
+El templo:
+  account: Expenses:Entertainment:Club
+  narration: Salsa club
+
+FRUTERIA RICA FRUITMADRID       ES:
+  account: Expenses:Food:Vegetables
+  payee: Fruteria
+
+LA GALERIAMADRID       ES:
+  account: Expenses:Food:Restaurant:Breakfast
+  narration: Lovely bar close to the office
+  payee: La Galeria Madrid
+
+Pauschalen:
+  account: Expenses:Fees:SpkCGW
+
+SIMPLY JUAN BRAVOMADRID       ES:
+  account: Expenses:Food:Grocery
+  narration: Supermarket close to the apartment
+  payee: Simply Juan Bravo
+
+Simply juan bravo:
+  account: Expenses:Food:Grocery
+  narration: Supermarket
+
+ZV-Entgelte:
+  account: Expenses:Fees:SpkCGW
+

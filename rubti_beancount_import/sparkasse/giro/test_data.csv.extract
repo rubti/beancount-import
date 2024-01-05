@@ -1,0 +1,24 @@
+
+2023-06-01 * "ASOCIACION INTERNACIONAL VIA FACIL" "Juan Bravo 62, DL5AH1"
+  Assets:DE:SpkCGW:Checking          -530.00 EUR
+  Expenses:Residence:MADJuanBravo62   530.00 EUR
+
+2023-06-01 * "Thilo Wendt" "Sparen"
+  Assets:DE:SpkCGW:Checking  -600.00 EUR
+
+2023-06-01 * "ZV-Entgelte"
+  Assets:DE:SpkCGW:Checking  -1.20 EUR
+  Expenses:Fees:SpkCGW        1.20 EUR
+
+2023-06-01 * "Pauschalen"
+  Assets:DE:SpkCGW:Checking  -0.97 EUR
+  Expenses:Fees:SpkCGW        0.97 EUR
+
+2023-06-09 * "Thilo wendt" "Budget DATUM 08.06.2023, 20.52 UHR"
+  Assets:DE:SpkCGW:Checking  -600.00 EUR
+
+2023-06-15 * "SPK CELLE-GIFHORN-WOLFSBURG" "MASTERCARD549003XXXXXX4932 EINZUG DES RECHNUNGSB 07.0 6"
+  Assets:DE:SpkCGW:Checking  -1089.53 EUR
+
+2023-06-21 * "Hey Nature GmbH" "Hey Nature GmbH"
+  Assets:DE:SpkCGW:Checking  -49.83 EUR

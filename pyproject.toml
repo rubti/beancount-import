@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rubti_beancount_import"
+dynamic = ["version"]
+dependencies = ["beancount", "pandas", "openpyxl", "identify", "pyyaml"]
+requires-python = ">= 3"
+
+authors = [{ name = "Thilo Wendt" }]
+description = "Beancount importers for various CSV formats"
+readme = "README.md"
+keywords = ["beancount", "sparkasse", "bbva", "edenred"]
+classifiers = [
+    "Programming Language :: Python",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+dev = ["black", "isort", "pytest", "pre-commit"]
+
+[project.urls]
+Repository = "https://github.com/twendt97/beancount-import.git"
+
+[tool.isort]
+profile = "black"

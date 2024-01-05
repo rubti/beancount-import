@@ -1,0 +1,8 @@
+"Auftragskonto";"Buchungstag";"Valutadatum";"Buchungstext";"Verwendungszweck";"Glaeubiger ID";"Mandatsreferenz";"Kundenreferenz (End-to-End)";"Sammlerreferenz";"Lastschrift Ursprungsbetrag";"Auslagenersatz Ruecklastschrift";"Beguenstigter/Zahlungspflichtiger";"Kontonummer/IBAN";"BIC (SWIFT-Code)";"Betrag";"Waehrung";"Info"
+"DE12345678901234567890";"21.06.23";"21.06.23";"FOLGELASTSCHRIFT";"Hey Nature GmbH ";"BE39ZZZCITD000000037";"UQPHSL4RNCZ1LCAD";"STR16NAO5NZI8ZMZ45INPRANJL0HXQ7NKA";"";"";"";"Hey Nature GmbH";"IE30CITI99005132956548";"STTOIE22";"-49,83";"EUR";"Umsatz gebucht"
+"DE12345678901234567890";"15.06.23";"15.06.23";"EIGENE KREDITKARTENABRECHN.";"MASTERCARD549003XXXXXX4932 EINZUG DES RECHNUNGSB 07.0 6 ";"DE15ZZZ00000199519";"";"";"";"";"";"SPK CELLE-GIFHORN-WOLFSBURG";"DE80269513119001485060";"NOLADE21GFW";"-1089,53";"EUR";"Umsatz gebucht"
+"DE12345678901234567890";"09.06.23";"09.06.23";"ONLINE-UEBERWEISUNG";"Budget DATUM 08.06.2023, 20.52 UHR ";"";"";"";"";"";"";"Thilo wendt";"ES123456789";"BBVAESMMXXX";"-600,00";"EUR";"Umsatz gebucht"
+"DE12345678901234567890";"01.06.23";"01.06.23";"DAUERAUFTRAG";"Juan Bravo 62, DL5AH1 ";"";"";"";"";"";"";"ASOCIACION INTERNACIONAL VIA FACIL";"ES5601827345400201528481";"BBVAESMMXXX";"-530,00";"EUR";"Umsatz gebucht"
+"DE12345678901234567890";"01.06.23";"01.06.23";"DAUERAUFTRAG";"Sparen ";"";"";"";"";"";"";"Thilo Wendt";"DE04269513110161521893";"NOLADE21GFW";"-600,00";"EUR";"Umsatz gebucht"
+"DE12345678901234567890";"01.06.23";"01.06.23";"ENTGELTABSCHLUSS";"ZV-Entgelte ";"";"";"";"";"";"";"";"9000932203";"26951311";"-1,20";"EUR";"Umsatz gebucht"
+"DE12345678901234567890";"01.06.23";"01.06.23";"ENTGELTABSCHLUSS";"Pauschalen ";"";"";"";"";"";"";"";"9000932203";"26951311";"-0,97";"EUR";"Umsatz gebucht"

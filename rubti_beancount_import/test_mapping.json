@@ -1,0 +1,38 @@
+{
+    "Simply juan bravo": {
+        "account": "Expenses:Food:Grocery",
+        "narration": "Supermarket"
+    },
+    "El templo": {
+        "account": "Expenses:Entertainment:Club",
+        "narration": "Salsa club"
+    },
+    "Bar restaurante el nião p": {
+        "account": "Expenses:Entertainment:Bar",
+        "narration": "Previa despues de la clase",
+        "payee": "El niño pastor"
+    },
+    "LA GALERIAMADRID       ES": {
+        "account": "Expenses:Food:Restaurant:Breakfast",
+        "payee": "La Galeria Madrid",
+        "narration": "Lovely bar close to the office"
+    },
+    "SIMPLY JUAN BRAVOMADRID       ES": {
+        "account": "Expenses:Food:Grocery",
+        "narration": "Supermarket close to the apartment",
+        "payee": "Simply Juan Bravo"
+    },
+    "FRUTERIA RICA FRUITMADRID       ES": {
+        "account": "Expenses:Food:Vegetables",
+        "payee": "Fruteria"
+    },
+    "ASOCIACION INTERNACIONAL VIA FACIL": {
+        "account": "Expenses:Residence:MADJuanBravo62"
+    },
+    "ZV-Entgelte": {
+        "account": "Expenses:Fees:SpkCGW"
+    },
+    "Pauschalen": {
+        "account": "Expenses:Fees:SpkCGW"
+    }
+}
