@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rubti_beancount_import"
-version = "0.1"
+version = "0.2"
 dependencies = ["beancount", "pandas", "openpyxl", "identify", "pyyaml"]
 requires-python = ">= 3"
 
