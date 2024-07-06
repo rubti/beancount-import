@@ -40,11 +40,13 @@ class BBVAImporter(ImporterProtocol):
         account_number: str,
         account_mapping: str = None,
         currency: str = "EUR",
+        tags: data.Set = data.EMPTY_SET,
     ) -> None:
         self.account = account
         self.account_number = account_number
         self.currency = currency
         self._acc_map = utils.AccountMapper(account_mapping)
+        self.tags = tags
 
     def name(self) -> str:
         return "BBVA Checking"
@@ -102,6 +104,7 @@ class BBVAImporter(ImporterProtocol):
                     meta,
                     payee,
                     narration,
+                    tags=self.tags,
                 )
             )
         return entries
