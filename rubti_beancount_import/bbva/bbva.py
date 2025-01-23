@@ -72,7 +72,6 @@ class BBVAImporter(ImporterProtocol):
             return False
         try:
             raw_content = pd.read_excel(file.name, header=self._excel_header_line)
-            print(raw_content.columns)
         except:
             return False
         c = raw_content.columns
