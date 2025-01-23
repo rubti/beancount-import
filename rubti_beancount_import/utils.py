@@ -26,7 +26,12 @@ def create_posting(account: str, units: amount, meta: dict) -> data.Posting:
 
 
 def create_transaction(
-    postings: list[data.Posting], date: datetime, meta: dict, payee: str, narration: str
+    postings: list[data.Posting],
+    date: datetime,
+    meta: dict,
+    payee: str,
+    narration: str,
+    tags: data.Set = data.EMPTY_SET,
 ) -> data.Transaction:
     """Create beancount transaction with default values for flag tags and links"""
     return data.Transaction(
@@ -35,7 +40,7 @@ def create_transaction(
         flag=flags.FLAG_OKAY,
         payee=payee,
         narration=narration,
-        tags=data.EMPTY_SET,
+        tags=tags,
         links=data.EMPTY_SET,
         postings=postings,
     )

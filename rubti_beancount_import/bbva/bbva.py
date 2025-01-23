@@ -1,3 +1,4 @@
+from datetime import datetime
 from decimal import Decimal
 from pathlib import Path
 
@@ -28,6 +29,21 @@ class BBVAImporter(ImporterProtocol):
         ],
         dtype="object",
     )
+    _new_expected_header = pd.Index(
+        [
+            "Unnamed: 0",
+            "F.Valor",
+            "Fecha",
+            "Concepto",
+            "Movimiento",
+            "Importe",
+            "Divisa",
+            "Disponible",
+            "Divisa.1",
+            "Observaciones",
+        ],
+        dtype="object",
+    )
     account: str
     account_number: str
     currency: str
@@ -40,11 +56,13 @@ class BBVAImporter(ImporterProtocol):
         account_number: str,
         account_mapping: str = None,
         currency: str = "EUR",
+        tags: data.Set = data.EMPTY_SET,
     ) -> None:
         self.account = account
         self.account_number = account_number
         self.currency = currency
         self._acc_map = utils.AccountMapper(account_mapping)
+        self.tags = tags
 
     def name(self) -> str:
         return "BBVA Checking"
@@ -54,9 +72,11 @@ class BBVAImporter(ImporterProtocol):
             return False
         try:
             raw_content = pd.read_excel(file.name, header=self._excel_header_line)
+            print(raw_content.columns)
         except:
             return False
-        return raw_content.columns.equals(self._expected_header)
+        c = raw_content.columns
+        return c.equals(self._expected_header) or c.equals(self._new_expected_header)
 
     def file_account(self, file):
         return self.account
@@ -95,13 +115,18 @@ class BBVAImporter(ImporterProtocol):
                 narration = payee
                 payee = None
 
+            try:
+                date = row["Fecha"].date()
+            except AttributeError:
+                date = datetime.strptime(row["Fecha"], "%d/%m/%Y").date()
             entries.append(
                 utils.create_transaction(
                     postings,
-                    row["Fecha"].date(),
+                    date,
                     meta,
                     payee,
                     narration,
+                    tags=self.tags,
                 )
             )
         return entries
