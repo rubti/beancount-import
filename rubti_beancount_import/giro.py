@@ -52,7 +52,7 @@ class SpkGiroImporter(beangulp.Importer):
         mimetype, encoding = mimetypes.guess_type(filepath)
         if mimetype != "text/csv":
             return False
-        with open(filepath, encoding=encoding) as f:
+        with open(filepath, encoding=self.file_encoding) as f:
             header = f.readline().strip()
             csv_row = f.readline().strip()
 
