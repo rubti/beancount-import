@@ -4,8 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rubti_beancount_import"
-version = "0.4"
-dependencies = ["beancount<3", "pandas", "openpyxl", "identify", "pyyaml"]
+version = "1.0"
+dependencies = [
+    "beancount<=3.2",
+    "beangulp",
+    "pandas",
+    "openpyxl",
+    "identify",
+    "pyyaml",
+]
 requires-python = ">= 3"
 
 authors = [{ name = "Thilo Wendt" }]
@@ -14,7 +21,7 @@ readme = "README.md"
 keywords = ["beancount", "sparkasse", "bbva", "edenred"]
 classifiers = [
     "Programming Language :: Python",
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: End Users/Desktop",
     "License :: OSI Approved :: MIT License",
@@ -24,10 +31,10 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-dev = ["black", "isort", "pytest", "pre-commit"]
+dev = ["black", "isort", "pre-commit"]
 
 [project.urls]
-Repository = "https://github.com/twendt97/beancount-import.git"
+Repository = "https://github.com/rubti/beancount-import"
 
 [tool.isort]
 profile = "black"

@@ -1,0 +1,18 @@
+;; Account: Assets:ES:MyInvestor
+;; Date: 2025-10-07
+;; Name: myinvestor.test_data.csv
+
+2025-09-08 * "MyInvestor Test"
+  Assets:ES:MyInvestor  100 EUR
+
+2025-09-11 * "PERIODO 11/08/2025 11/09/2025"
+  Assets:ES:MyInvestor  0.01 EUR
+
+2025-09-15 * "ISHARES DEVL WRLD INDX D EUR @"
+  Assets:ES:MyInvestor  -100 EUR
+
+2025-10-04 * "Liq. intereses septiembre"
+  Assets:ES:MyInvestor  14.7 EUR
+
+2025-10-07 * "Ret. IRPF intereses septiembre"
+  Assets:ES:MyInvestor  -2.79 EUR

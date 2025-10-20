@@ -1,9 +1,10 @@
 import csv
 from datetime import datetime
-from pathlib import Path
 
+import beangulp
 from beancount.core import amount, data
-from beancount.ingest.importer import ImporterProtocol
+from beangulp import mimetypes
+from beangulp.testing import main
 
 import rubti_beancount_import.utils as utils
 
@@ -27,9 +28,9 @@ DEFAULT_FIELDS = (
 )
 
 
-class SpkMasterCardImporter(ImporterProtocol):
+class SpkMasterCardImporter(beangulp.Importer):
     last_four_digits: str
-    account: str
+    ledger_account: str
     currency: str
     _date_format = "%d.%m.%y"
     _file_encoding = "ISO-8859-1"
@@ -42,24 +43,21 @@ class SpkMasterCardImporter(ImporterProtocol):
         account_mapping: str = None,
         currency: str = "EUR",
     ) -> None:
-        self.account = account
+        self.ledger_account = account
         self.last_four_digits = last_four_digits
         self.currency = currency
-        self._fields = DEFAULT_FIELDS
         self._acc_map = utils.AccountMapper(account_mapping)
 
-    def name(self) -> str:
-        return "Sparkasse MasterCard"
-
-    def identify(self, file) -> bool:
-        if Path(file.name).suffix.lower() != ".csv":
+    def identify(self, filepath) -> bool:
+        mimetype, encoding = mimetypes.guess_type(filepath)
+        if mimetype != "text/csv":
             return False
 
-        with open(file.name, encoding=self._file_encoding) as f:
+        with open(filepath, encoding=self._file_encoding) as f:
             header = f.readline().strip()
             csv_row = f.readline().strip()
 
-        expected_header = ";".join([f'"{field}"' for field in self._fields])
+        expected_header = ";".join([f'"{field}"' for field in DEFAULT_FIELDS])
 
         header_match = header == expected_header
         card_number_match = (
@@ -67,20 +65,20 @@ class SpkMasterCardImporter(ImporterProtocol):
         )
         return header_match and card_number_match
 
-    def file_account(self, file):
-        return self.account
+    def account(self, filepath):
+        return self.ledger_account
 
-    def extract(self, file, existing_entries=None):
-        if existing_entries:
-            entries = existing_entries
+    def extract(self, filepath, existing=None):
+        if existing:
+            entries = existing
         else:
             entries = []
         index = 0
-        with open(file.name, encoding=self._file_encoding) as f:
+        with open(filepath, encoding=self._file_encoding) as f:
             for index, row in enumerate(
                 csv.DictReader(f, delimiter=";", quotechar='"')
             ):
-                meta = data.new_metadata(filename=file.name, lineno=index)
+                meta = data.new_metadata(filename=filepath, lineno=index)
                 date: datetime = datetime.strptime(
                     row["Buchungsdatum"], self._date_format
                 ).date()
@@ -88,7 +86,7 @@ class SpkMasterCardImporter(ImporterProtocol):
                 units = amount.Amount(
                     utils.format_amount(row["Buchungsbetrag"]), currency=self.currency
                 )
-                postings = [utils.create_posting(self.account, units, meta)]
+                postings = [utils.create_posting(self.ledger_account, units, meta)]
 
                 if self._acc_map.known(narration):
                     postings.append(
@@ -114,8 +112,17 @@ class SpkMasterCardImporter(ImporterProtocol):
                 )
         return entries
 
-    def file_name(self, file):
+    def filename(self, filepath):
         return f"MasterCard_{self.last_four_digits}.csv"
 
-    def file_date(self, file):
-        return max(map(lambda entry: entry.date, self.extract(file)))
+    def date(self, filepath):
+        return max(map(lambda entry: entry.date, self.extract(filepath)))
+
+
+if __name__ == "__main__":
+    importer = SpkMasterCardImporter(
+        "Liabilities:DE:MasterCard:Silver-4932",
+        "4932",
+        account_mapping="./tests/test_mapping.yaml",
+    )
+    main(importer)

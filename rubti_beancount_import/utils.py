@@ -31,7 +31,7 @@ def create_transaction(
     meta: dict,
     payee: str,
     narration: str,
-    tags: data.Set = data.EMPTY_SET,
+    tags: set = frozenset(),
 ) -> data.Transaction:
     """Create beancount transaction with default values for flag tags and links"""
     return data.Transaction(
