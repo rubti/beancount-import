@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rubti_beancount_import"
-version = "1.0"
+version = "1.1"
 dependencies = [
     "beancount<=3.2",
     "beangulp",
@@ -24,7 +24,6 @@ classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: End Users/Desktop",
-    "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Topic :: Office/Business :: Financial :: Accounting",
     "Typing :: Typed",
