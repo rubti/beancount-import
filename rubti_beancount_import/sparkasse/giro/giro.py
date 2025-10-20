@@ -1,10 +1,10 @@
 import csv
-from collections.abc import Sequence
 from datetime import datetime
 from pathlib import Path
 
+import beangulp
 from beancount.core import amount, data
-from beancount.ingest import importer
+from beangulp import mimetypes
 
 import rubti_beancount_import.utils as utils
 
@@ -28,17 +28,10 @@ DEFAULT_FIELDS = (
     "Info",
 )
 
+from beangulp.testing import main
 
-class SpkGiroImporter(importer.ImporterProtocol):
-    _txn_infos: dict = {}
-    _fields: Sequence[str]
-    iban: str
-    account: str
-    currency: str
-    date_format: str
-    file_encoding: str
-    _acc_map: utils.AccountMapper
 
+class SpkGiroImporter(beangulp.Importer):
     def __init__(
         self,
         iban: str,
@@ -49,37 +42,38 @@ class SpkGiroImporter(importer.ImporterProtocol):
         account_mapping: Path = None,
     ):
         self.iban = iban
-        self.account = account
+        self.ledger_account = account
         self.currency = currency
         self.date_format = date_format
         self.file_encoding = file_encoding
         self._fields = DEFAULT_FIELDS
         self._acc_map = utils.AccountMapper(account_mapping)
 
-    def identify(self, file):
-        if Path(file.name).suffix.lower() != ".csv":
+    def identify(self, filepath):
+        mimetype, encoding = mimetypes.guess_type(filepath)
+        if mimetype != "text/csv":
             return False
-        with open(file.name, encoding=self.file_encoding) as f:
+        with open(filepath, encoding=encoding) as f:
             header = f.readline().strip()
             csv_row = f.readline().strip()
 
-        expected_header = ";".join([f'"{field}"' for field in self._fields])
+        expected_header = ";".join([f'"{field}"' for field in DEFAULT_FIELDS])
 
         header_match = header == expected_header
         iban_match = csv_row.split(";")[0].replace('"', "") == self.iban
         return header_match and iban_match
 
-    def extract(self, file, existing_entries=None):
-        if existing_entries:
-            entries = existing_entries
+    def extract(self, filepath, existing=None):
+        if existing:
+            entries = existing
         else:
             entries = []
         index = 0
-        with open(file.name, encoding=self.file_encoding) as f:
+        with open(filepath, encoding=self.file_encoding) as f:
             for index, row in enumerate(
                 csv.DictReader(f, delimiter=";", quotechar='"')
             ):
-                meta = data.new_metadata(filename=file.name, lineno=index)
+                meta = data.new_metadata(filename=filepath, lineno=index)
                 date: datetime = datetime.strptime(
                     row["Buchungstag"], self.date_format
                 ).date()
@@ -88,7 +82,7 @@ class SpkGiroImporter(importer.ImporterProtocol):
                 units = amount.Amount(
                     utils.format_amount(row["Betrag"]), currency=self.currency
                 )
-                postings = [utils.create_posting(self.account, units, meta)]
+                postings = [utils.create_posting(self.ledger_account, units, meta)]
 
                 if len(payee) > 0:
                     search_key = payee
@@ -117,11 +111,20 @@ class SpkGiroImporter(importer.ImporterProtocol):
                 )
         return entries
 
-    def file_account(self, file):
-        return self.account
+    def account(self, filepath):
+        return self.ledger_account
 
-    def file_name(self, file):
+    def filename(self, filepath):
         return f"{self.iban}.csv"
 
-    def file_date(self, file):
-        return max(map(lambda entry: entry.date, self.extract(file)))
+    def date(self, filepath):
+        return max(map(lambda entry: entry.date, self.extract(filepath)))
+
+
+if __name__ == "__main__":
+    importer = SpkGiroImporter(
+        iban="DE12345678901234567890",
+        account="Assets:DE:SpkCGW:Checking",
+        account_mapping="../../test_mapping.yaml",
+    )
+    main(importer)
