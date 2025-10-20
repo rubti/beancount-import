@@ -2,16 +2,17 @@ from datetime import datetime
 from decimal import Decimal
 from pathlib import Path
 
+import beangulp
 import pandas as pd
 from beancount.core import amount, data
-from beancount.ingest.importer import ImporterProtocol
+from beangulp.testing import main
 
 import rubti_beancount_import.utils as utils
 
 IGNORE_DESCRIPTION = ("Pago con tarjeta", "Otros")
 
 
-class BBVAImporter(ImporterProtocol):
+class BBVAImporter(beangulp.Importer):
     """Beancount importer for Excel sheet for checking accounts from Spanish BBVA bank"""
 
     _expected_header = pd.Index(
@@ -44,7 +45,7 @@ class BBVAImporter(ImporterProtocol):
         ],
         dtype="object",
     )
-    account: str
+    ledger_account: str
     account_number: str
     currency: str
     _excel_header_line: int = 4
@@ -58,39 +59,36 @@ class BBVAImporter(ImporterProtocol):
         currency: str = "EUR",
         tags: data.Set = data.EMPTY_SET,
     ) -> None:
-        self.account = account
+        self.ledger_account = account
         self.account_number = account_number
         self.currency = currency
         self._acc_map = utils.AccountMapper(account_mapping)
         self.tags = tags
 
-    def name(self) -> str:
-        return "BBVA Checking"
-
-    def identify(self, file) -> bool:
-        if Path(file.name).suffix.lower() != ".xlsx":
+    def identify(self, filepath) -> bool:
+        if Path(filepath).suffix.lower() != ".xlsx":
             return False
         try:
-            raw_content = pd.read_excel(file.name, header=self._excel_header_line)
+            raw_content = pd.read_excel(filepath, header=self._excel_header_line)
         except:
             return False
         c = raw_content.columns
         return c.equals(self._expected_header) or c.equals(self._new_expected_header)
 
-    def file_account(self, file):
-        return self.account
+    def account(self, filepath):
+        return self.ledger_account
 
-    def extract(self, file, existing_entries=None):
-        if existing_entries:
-            entries = existing_entries
+    def extract(self, filepath, existing=None):
+        if existing:
+            entries = existing
         entries = []
-        raw_content = pd.read_excel(file.name, header=self._excel_header_line)
+        raw_content = pd.read_excel(filepath, header=self._excel_header_line)
         for ind, row in raw_content.iterrows():
-            meta = data.new_metadata(filename=file.name, lineno=row.name)
+            meta = data.new_metadata(filename=filepath, lineno=row.name)
             units = amount.Amount(
                 Decimal(str(round(row["Importe"], 2))), currency=self.currency
             )
-            postings = [utils.create_posting(self.account, units, meta)]
+            postings = [utils.create_posting(self.ledger_account, units, meta)]
 
             payee = row["Concepto"]
             search_key = payee
@@ -135,3 +133,13 @@ class BBVAImporter(ImporterProtocol):
 
     def file_date(self, file):
         return max(map(lambda entry: entry.date, self.extract(file)))
+
+
+if __name__ == "__main__":
+    importer = BBVAImporter(
+        "Assets:ES:BBVA:Checking",
+        "ES12345678901234567890",
+        "../test_mapping.yaml",
+        tags={"share-Example"},
+    )
+    main(importer)
