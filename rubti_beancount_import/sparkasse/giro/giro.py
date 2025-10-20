@@ -5,6 +5,7 @@ from pathlib import Path
 import beangulp
 from beancount.core import amount, data
 from beangulp import mimetypes
+from beangulp.testing import main
 
 import rubti_beancount_import.utils as utils
 
@@ -27,8 +28,6 @@ DEFAULT_FIELDS = (
     "Waehrung",
     "Info",
 )
-
-from beangulp.testing import main
 
 
 class SpkGiroImporter(beangulp.Importer):
