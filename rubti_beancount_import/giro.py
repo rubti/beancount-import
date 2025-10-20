@@ -124,6 +124,6 @@ if __name__ == "__main__":
     importer = SpkGiroImporter(
         iban="DE12345678901234567890",
         account="Assets:DE:SpkCGW:Checking",
-        account_mapping="../../test_mapping.yaml",
+        account_mapping="./tests/test_mapping.yaml",
     )
     main(importer)

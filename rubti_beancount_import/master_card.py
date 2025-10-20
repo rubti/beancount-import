@@ -123,6 +123,6 @@ if __name__ == "__main__":
     importer = SpkMasterCardImporter(
         "Liabilities:DE:MasterCard:Silver-4932",
         "4932",
-        account_mapping="../../test_mapping.yaml",
+        account_mapping="./tests/test_mapping.yaml",
     )
     main(importer)

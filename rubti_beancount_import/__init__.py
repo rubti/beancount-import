@@ -1,3 +1,3 @@
-from .bbva.bbva import BBVAImporter
-from .sparkasse.giro.giro import SpkGiroImporter
-from .sparkasse.master_card.master_card import SpkMasterCardImporter
+from .bbva import BBVAImporter
+from .giro import SpkGiroImporter
+from .master_card import SpkMasterCardImporter

@@ -17,5 +17,5 @@ jobs:
     - name: Install dependencies
       run: python3 -m pip install --upgrade .[dev]
     - name: Test
-      run: pytest
+      run: ./run_test.sh
       working-directory: ./rubti_beancount_import

@@ -139,7 +139,7 @@ if __name__ == "__main__":
     importer = BBVAImporter(
         "Assets:ES:BBVA:Checking",
         "ES12345678901234567890",
-        "../test_mapping.yaml",
+        "./tests/test_mapping.yaml",
         tags={"share-Example"},
     )
     main(importer)

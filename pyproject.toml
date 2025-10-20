@@ -31,7 +31,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-dev = ["black", "isort", "pytest", "pre-commit"]
+dev = ["black", "isort", "pre-commit"]
 
 [project.urls]
 Repository = "https://github.com/twendt97/beancount-import.git"
