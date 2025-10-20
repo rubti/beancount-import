@@ -3,7 +3,7 @@ on:
 
 jobs:
   run-tests:
-    name: Run tests with pytest
+    name: Run regression tests
     runs-on: ubuntu-latest
     environment:
       name: pytest

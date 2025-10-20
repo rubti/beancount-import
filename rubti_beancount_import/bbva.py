@@ -57,7 +57,7 @@ class BBVAImporter(beangulp.Importer):
         account_number: str,
         account_mapping: str = None,
         currency: str = "EUR",
-        tags: data.Set = data.EMPTY_SET,
+        tags: set = frozenset(),
     ) -> None:
         self.ledger_account = account
         self.account_number = account_number
