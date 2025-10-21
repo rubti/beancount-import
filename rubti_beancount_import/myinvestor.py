@@ -1,6 +1,5 @@
 import csv
 from datetime import datetime
-from os import path
 
 import beangulp
 from beancount.core import amount, data
@@ -22,7 +21,10 @@ class MyInvestor(beangulp.Importer):
         if mimetype != "text/csv":
             return False
         with open(filepath, encoding="utf-8") as f:
-            header = f.readline().strip()
+            try:
+                header = f.readline().strip()
+            except UnicodeDecodeError:
+                return False
         return header.startswith(
             "Fecha de operación;Fecha de valor;Concepto;Importe;Divisa"
         )
@@ -57,7 +59,7 @@ class MyInvestor(beangulp.Importer):
         return entries
 
     def filename(self, filepath):
-        return "myinvestor." + path.basename(filepath)
+        return "myinvestor.csv"
 
     def account(self, filepath):
         return self.ledger_account

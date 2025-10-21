@@ -128,11 +128,11 @@ class BBVAImporter(beangulp.Importer):
             )
         return entries
 
-    def file_name(self, file):
+    def filename(self, filepath):
         return f"BBVA_{self.account_number}.xlsx"
 
-    def file_date(self, file):
-        return max(map(lambda entry: entry.date, self.extract(file)))
+    def date(self, filepath):
+        return max(map(lambda entry: entry.date, self.extract(filepath)))
 
 
 if __name__ == "__main__":
