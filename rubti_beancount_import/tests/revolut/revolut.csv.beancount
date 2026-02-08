@@ -1,0 +1,17 @@
+;; Account: Assets:ES:Revolut
+;; Date: 2026-01-24
+;; Name: revolut.csv
+
+2026-01-02 * "Apple Pay top-up by *9242"
+  Assets:ES:Revolut  161.89 EUR
+
+2026-01-02 * "Apple Pay top-up by *9242"
+  Assets:ES:Revolut  20.00 EUR
+
+2026-01-02 * "Booking.com*AMSTERDAM"
+  Assets:ES:Revolut  -162.26 EUR
+
+2026-01-24 * "Payment from WENDT, THILO"
+  Assets:ES:Revolut  300.00 EUR
+
+2026-01-25 balance Assets:ES:Revolut                               319.63 EUR
