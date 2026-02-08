@@ -1,6 +1,6 @@
 ;; Account: Assets:ES:BBVA:Checking
-;; Date: 
-;; Name: 
+;; Date: 2024-12-31
+;; Name: BBVA_ES12345678901234567890.xlsx
 
 2024-12-02 * "Abono por transferencia a su favor recibida en euros" "Transferencia recibida" #share-Example
   Assets:ES:BBVA:Checking  700.0 EUR
@@ -100,3 +100,5 @@
 
 2024-12-30 * "Transferencia recibida" "Cuenta comun bea enero 2025" #share-Example
   Assets:ES:BBVA:Checking  300.0 EUR
+
+2024-12-31 balance Assets:ES:BBVA:Checking                         1244.16 EUR

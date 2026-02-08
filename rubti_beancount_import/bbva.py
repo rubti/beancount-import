@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
 
@@ -82,6 +82,7 @@ class BBVAImporter(beangulp.Importer):
         if existing:
             entries = existing
         entries = []
+        balances = []
         raw_content = pd.read_excel(filepath, header=self._excel_header_line)
         for ind, row in raw_content.iterrows():
             meta = data.new_metadata(filename=filepath, lineno=row.name)
@@ -126,6 +127,20 @@ class BBVAImporter(beangulp.Importer):
                     tags=self.tags,
                 )
             )
+            balance = amount.Amount(
+                Decimal(str(round(row["Disponible"], 2))), currency=self.currency
+            )
+            balances.append(
+                data.Balance(
+                    meta,
+                    date + timedelta(days=1),
+                    self.ledger_account,
+                    balance,
+                    None,
+                    None,
+                )
+            )
+        entries.append(balances[0])
         return entries
 
     def filename(self, filepath):
