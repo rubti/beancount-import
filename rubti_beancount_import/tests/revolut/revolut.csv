@@ -1,0 +1,5 @@
+Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance
+Topup,Current,2026-01-02 22:09:22,2026-01-02 22:09:23,Apple Pay top-up by *9242,161.89,0.00,EUR,COMPLETED,161.89
+Topup,Current,2026-01-02 22:10:44,2026-01-02 22:10:46,Apple Pay top-up by *9242,20.00,0.00,EUR,COMPLETED,181.89
+Rev Payment,Current,2026-01-02 22:10:59,2026-01-02 22:10:59,Booking.com*AMSTERDAM,-162.26,0.00,EUR,COMPLETED,19.63
+Topup,Current,2026-01-24 11:11:43,2026-01-24 11:11:44,"Payment from WENDT, THILO",300.00,0.00,EUR,COMPLETED,319.63
