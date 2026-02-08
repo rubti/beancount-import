@@ -3,14 +3,13 @@
 This repository contains [beancount](https://beancount.github.io/docs/) importers to automatically import banking data from the following sources:
 
 * [Sparkasse Germany](https://www.sparkasse.de/)
-    * Checking accounts
+    * Checking accounts in ``CSV-CAMT V2`` format
     * MasterCard
 * [BBVA](https://www.bbva.es/) checking accounts in Excel .xlsx format 
-* [Edenred Spain](https://www.edenred.es/) bonus cards
+* [MyInvestor](https://myinvestor.es/)
+* [Revolut](https://www.revolut.com/es-ES/)
 
-The majority of the importers have regression tests in place which are built with the [beancount regression test plugin](https://beancount.github.io/docs/importing_external_data.html#regression-testing-your-importers).
-
-## Importing transactions
+## Importing transactions from Sparkasse
 
 In order to import transactions from german Sparkasse, you need to download your transactions in CSV format.
 
