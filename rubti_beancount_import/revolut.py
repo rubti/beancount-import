@@ -5,7 +5,7 @@ from beangulp.importers import csvbase
 from beangulp.testing import main
 
 
-class Importer(csvbase.Importer):
+class Revolut(csvbase.Importer):
     date = csvbase.Date("Completed Date", "%Y-%m-%d %H:%M:%S")
     narration = csvbase.Column("Description")
     amount = csvbase.Amount("Amount")
@@ -16,7 +16,10 @@ class Importer(csvbase.Importer):
         if mimetype != "text/csv":
             return False
         with open(filepath) as fd:
-            head = fd.read(1024)
+            try:
+                head = fd.readline().strip()
+            except UnicodeDecodeError:
+                return False
         return head.startswith(
             "Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance"
         )
@@ -26,4 +29,4 @@ class Importer(csvbase.Importer):
 
 
 if __name__ == "__main__":
-    main(Importer("Assets:ES:Revolut", "EUR"))
+    main(Revolut("Assets:ES:Revolut", "EUR"))
