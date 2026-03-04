@@ -4,21 +4,29 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rubti_beancount_import"
-version = "1.3"
+version = "1.4"
 dependencies = [
     "beancount<=3.2",
-    "beangulp",
-    "pandas",
-    "openpyxl",
-    "identify",
-    "pyyaml",
+    "beangulp<0.3",
+    "pandas<3.1",
+    "openpyxl<3.2",
+    "identify<2.7",
+    "pyyaml<6.1",
 ]
 requires-python = ">= 3"
 
 authors = [{ name = "Thilo Wendt" }]
 description = "Beancount importers for various CSV formats"
 readme = "README.md"
-keywords = ["beancount", "sparkasse", "bbva", "edenred"]
+keywords = [
+    "beancount",
+    "sparkasse",
+    "bbva",
+    "revolut",
+    "myinvestor",
+    "degiro",
+    "importer",
+]
 classifiers = [
     "Programming Language :: Python",
     "Development Status :: 5 - Production/Stable",

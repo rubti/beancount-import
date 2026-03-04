@@ -1,5 +1,3 @@
-from os import path
-
 from beangulp import mimetypes
 from beangulp.importers import csvbase
 from beangulp.testing import main
@@ -12,10 +10,10 @@ class Revolut(csvbase.Importer):
     balance = csvbase.Amount("Balance")
 
     def identify(self, filepath):
-        mimetype, encoding = mimetypes.guess_type(filepath)
+        mimetype, _ = mimetypes.guess_type(filepath)
         if mimetype != "text/csv":
             return False
-        with open(filepath) as fd:
+        with open(filepath, encoding="utf-8") as fd:
             try:
                 head = fd.readline().strip()
             except UnicodeDecodeError:

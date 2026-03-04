@@ -6,3 +6,4 @@ python3 master_card.py test $DATA/spk_mastercard
 python3 bbva.py test $DATA/bbva
 python3 myinvestor.py test $DATA/myinvestor
 python3 revolut.py test $DATA/revolut
+python3 degiro.py test $DATA/degiro

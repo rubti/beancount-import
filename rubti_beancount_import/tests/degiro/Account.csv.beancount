@@ -1,0 +1,56 @@
+;; Account: Assets:DE:Degiro
+;; Date: 2026-02-28
+;; Name: degiro.csv
+
+2026-02-17 * "flatex Einzahlung"
+  Assets:DE:Degiro  150.00 EUR
+
+2026-02-18 * "flatex Einzahlung"
+  Assets:DE:Degiro  250.00 EUR
+
+2026-02-20 * "XTRACKERS II EUR CORPORATE BOND UCITS | DEGIRO Transaktionsgebühren und/oder Fremdkosten | LU0478205379 | af8de7f2-8c13-4093-ae1f-c725c7e26529"
+  Assets:DE:Degiro  -3.00 EUR
+
+2026-02-20 * "XTRACKERS II EUR CORPORATE BOND UCITS | Kauf 2 zu je 107,50 EUR (LU0478205379) | LU0478205379 | af8de7f2-8c13-4093-ae1f-c725c7e26529"
+  Assets:DE:Degiro  -215.00 EUR
+
+2026-02-23 * "XTRACKERS II EUR CORPORATE BOND UCITS | DEGIRO Transaktionsgebühren und/oder Fremdkosten | LU0478205379 | b016b7a3-2646-4d25-8a03-d7016df52f9e"
+  Assets:DE:Degiro  -3.00 EUR
+
+2026-02-23 * "XTRACKERS II EUR CORPORATE BOND UCITS | Kauf 3 zu je 108,00 EUR (LU0478205379) | LU0478205379 | b016b7a3-2646-4d25-8a03-d7016df52f9e"
+  Assets:DE:Degiro  -324.00 EUR
+
+2026-02-23 * "AMUNDI PRIME ALL COUNTRY WORLD UCITS | DEGIRO Transaktionsgebühren und/oder Fremdkosten | IE0003XJA0J9 | ac98b397-6736-4f9f-911d-20a377241e48"
+  Assets:DE:Degiro  -3.00 EUR
+
+2026-02-23 * "AMUNDI PRIME ALL COUNTRY WORLD UCITS | Kauf 6 zu je 50,50 EUR (IE0003XJA0J9) | IE0003XJA0J9 | ac98b397-6736-4f9f-911d-20a377241e48"
+  Assets:DE:Degiro  -303.00 EUR
+
+2026-02-23 * "flatex Einzahlung"
+  Assets:DE:Degiro  200.00 EUR
+
+2026-02-24 * "Einzahlung"
+  Assets:DE:Degiro  0.50 EUR
+
+2026-02-25 * "AMUNDI PRIME ALL COUNTRY WORLD UCITS | DEGIRO Transaktionsgebühren und/oder Fremdkosten | IE0003XJA0J9 | be9c46e9-8eec-4a6f-8107-c92cfdc712eb"
+  Assets:DE:Degiro  -3.00 EUR
+
+2026-02-25 * "AMUNDI PRIME ALL COUNTRY WORLD UCITS | Kauf 4 zu je 52,50 EUR (IE0003XJA0J9) | IE0003XJA0J9 | be9c46e9-8eec-4a6f-8107-c92cfdc712eb"
+  Assets:DE:Degiro  -210.00 EUR
+
+2026-02-25 * "flatex Einzahlung"
+  Assets:DE:Degiro  200.00 EUR
+
+2026-02-26 * "flatex Einzahlung"
+  Assets:DE:Degiro  200.00 EUR
+
+2026-02-27 * "AMUNDI PRIME ALL COUNTRY WORLD UCITS | DEGIRO Transaktionsgebühren und/oder Fremdkosten | IE0003XJA0J9 | 09f932c6-4130-4ef7-a867-b911aaf9cfaf"
+  Assets:DE:Degiro  -3.00 EUR
+
+2026-02-27 * "AMUNDI PRIME ALL COUNTRY WORLD UCITS | Kauf 5 zu je 50,00 EUR (IE0003XJA0J9) | IE0003XJA0J9 | 09f932c6-4130-4ef7-a867-b911aaf9cfaf"
+  Assets:DE:Degiro  -250.00 EUR
+
+2026-02-27 * "flatex Einzahlung"
+  Assets:DE:Degiro  200.00 EUR
+
+2026-02-28 balance Assets:DE:Degiro                                450.31 EUR
