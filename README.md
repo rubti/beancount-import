@@ -8,6 +8,7 @@ This repository contains [beancount](https://beancount.github.io/docs/) importer
 * [BBVA](https://www.bbva.es/) checking accounts in Excel .xlsx format 
 * [MyInvestor](https://myinvestor.es/)
 * [Revolut](https://www.revolut.com/es-ES/)
+* [Degiro](https://www.degiro.de/)
 
 ## Importing transactions from Sparkasse
 
